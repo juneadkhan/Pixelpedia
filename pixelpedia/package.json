@@ -1,0 +1,21 @@
+{
+  "name": "pixelpedia",
+  "description": "COMP 426 Final",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "mapbox-gl": "^2.2.0",
+    "react": "^17.0.0",
+    "react-bootstrap": "^1.5.2",
+    "react-dom": "^17.0.0",
+    "react-scripts": "^4.0.1",
+    "worker-loader": "^3.0.7"
+  },
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}
