@@ -2,16 +2,15 @@ import Navigation from "./navigation"
 import Map from "./map"
 import React, { useRef, useEffect, useState } from 'react';
 
-
 const Main = () => {
-    return (
+    return ( 
         <>
-        <React.Fragment>
+        <React.Fragment >
 
         <Map />
 
-        </React.Fragment>
-</>
+        </React.Fragment> 
+        </>
     );
 }
 

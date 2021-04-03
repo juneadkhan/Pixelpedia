@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Main from "./main"
+import Navigation from "./navigation"
+import Map from "./map"
 
- 
-ReactDOM.render(<Main />, document.getElementById('map'));
+ReactDOM.render( < Navigation/> , document.getElementById('nav'));
+ReactDOM.render( < Main /> , document.getElementById('map'));
