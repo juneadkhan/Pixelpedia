@@ -43,3 +43,13 @@
 .mapboxgl-popup-content{
     width: 40rem;
 }
+
+.light-theme {
+    background-color: #fff;
+    color: #444444;
+  }
+
+.dark-theme {
+    background-color: #000000;
+    color: #f8f8f8;
+  }
