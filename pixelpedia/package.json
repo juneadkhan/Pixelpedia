@@ -3,7 +3,9 @@
   "description": "COMP 426 Final",
   "version": "1.0.0",
   "main": "src/index.js",
+  "homepage": "https://juneadkhan.github.io/Pixelpedia/",
   "dependencies": {
+    "-": "0.0.1",
     "bootstrap": "^4.6.0",
     "firebase": "^8.3.2",
     "mapbox-gl": "^2.2.0",
@@ -14,12 +16,21 @@
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
+    "save-dev": "0.0.1-security",
     "worker-loader": "^3.0.7"
   },
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
 }
