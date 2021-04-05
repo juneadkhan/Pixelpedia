@@ -21,7 +21,7 @@
 
 #map-container {
     position: relative;
-    height: 93vh;
+    height: 91vh;
     width: 100vw;
 }
 
@@ -48,9 +48,46 @@
 .light-theme {
     background-color: #fff;
     color: #444444;
-  }
+}
 
 .dark-theme {
     background-color: #000000;
     color: #f8f8f8;
   }
+
+  h3 { 
+      font-family: 'Merriweather', Georgia, serif; 
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+}
+
+p{
+    font-family: 'Merriweather', Georgia, serif; 
+}
+
+.shmancy{
+    font-family: 'Merriweather', Georgia, serif; 
+}
+
+.firebaseui-idp-text{
+    font-family: 'Merriweather', Georgia, serif; 
+}
+
+.mapboxgl-ctrl-geocoder--input{
+    font-family: 'Merriweather', Georgia, serif !important; 
+}
+
+.mapboxgl-ctrl-geocoder--suggestion-title{
+    font-family: 'Merriweather', Georgia, serif !important; 
+}
+
+.mapboxgl-ctrl-geocoder--suggestion-address{
+    font-family: 'Merriweather', Georgia, serif !important; 
+    font-size: smaller;
+}
+
+
+.subheading{
+    font-family: 'Merriweather', Georgia, serif !important; 
+    font-size: xx-small
+}

@@ -113,22 +113,22 @@ function Navigation() {
       <>
         <div className={darkTheme ? 'dark-theme' : 'light-theme'}>
           <Navbar>
-            <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : 'black' }}>Pixelpedia</Navbar.Brand>
+            <Navbar.Brand className = "shmancy" href="#home" style={{ color: darkTheme ? 'white' : 'black' }}><h3>pixelpedia</h3></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
             <Button variant={darkTheme ? 'outline-warning' : 'outline-secondary'} onClick={handleClick}>{darkTheme ? '🌚' : '☀️'}</Button>
-            <Button variant="outline-info" onClick={handleShow}>Sign In</Button>
+            <Button className = "shmancy" variant="outline-info" onClick={handleShow}>Sign In</Button>
           </Navbar>
         </div>
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Sign In</Modal.Title >
+              <Modal.Title className = "shmancy" >Sign In</Modal.Title >
             </Modal.Header>
 
             <Modal.Body>
               <Container>
-                <h2 style={{ textAlign: 'center' }}>Welcome to Pixelpedia</h2>
+                <h2 className = "shmancy" style={{ textAlign: 'center' }}>Welcome to pixelpedia</h2>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
               </Container>
             </Modal.Body>
@@ -143,17 +143,17 @@ function Navigation() {
       <>
         <div className={darkTheme ? 'dark-theme' : 'light-theme'}>
           <Navbar>
-            <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : 'black' }}>Pixelpedia</Navbar.Brand>
+            <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : 'black' }}><h3>pixelpedia</h3><h5>Find the best photo spots</h5></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
             <Button variant={darkTheme ? 'outline-warning' : 'outline-secondary'} onClick={handleClick}>{darkTheme ? '🌚' : '☀️'}</Button>
-            <Button variant="outline-info" onClick={handleShow}>Signed in as {firebase.auth().currentUser.displayName}</Button>
+            <Button className = "shmancy" variant="outline-info" onClick={handleShow}>Signed in as {firebase.auth().currentUser.displayName}</Button>
           </Navbar>
         </div>
 
         <Modal show={show} onHide={handleClose} style={{ backgroundcolor: darkTheme ? 'white' : 'black' }}>
             <Modal.Header closeButton>
-              <Modal.Title>Profile</Modal.Title>
+              <Modal.Title className = "shmancy" >Profile</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>

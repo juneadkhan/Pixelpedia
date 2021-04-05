@@ -8,9 +8,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoianVuZWFkazI3IiwiYSI6ImNrbXpvcml4ajA0OXkydm8yO
 const Map = () => {
 
   const mapContainer = useRef();
-  const [lng, setLng] = useState(-79.055847);
+  const [lng, setLng] = useState(-79.0541);
   const [lat, setLat] = useState(35.913200);
-  const [zoom, setZoom] = useState(12);
+  const [zoom, setZoom] = useState(12.15);
 
   useEffect(() => {
     /*
@@ -33,7 +33,7 @@ const Map = () => {
       accessToken: mapboxgl.accessToken, // Set the access token
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       marker: false, // Do not use the default marker style
-      placeholder: 'Search for places in North Carolina', // Placeholder text for the search bar
+      placeholder: 'Find photo spots in...', // Placeholder text for the search bar
       bbox: [-79.5657, 35.4682, -77.2503, 36.2836], // Boundary for The Triangle
       proximity: {
         longitude: -79.055847,
