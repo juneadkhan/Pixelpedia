@@ -42,6 +42,7 @@
 
 .mapboxgl-popup-content{
     width: 40rem;
+    padding: 20px 20px 20px;
 }
 
 .light-theme {

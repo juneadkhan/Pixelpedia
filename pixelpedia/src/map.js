@@ -7,13 +7,21 @@ mapboxgl.accessToken = 'pk.eyJ1IjoianVuZWFkazI3IiwiYSI6ImNrbXpvcml4ajA0OXkydm8yO
 
 const Map = () => {
 
-
   const mapContainer = useRef();
   const [lng, setLng] = useState(-79.055847);
   const [lat, setLat] = useState(35.913200);
   const [zoom, setZoom] = useState(12);
 
   useEffect(() => {
+    /*
+    let theme = document.getElementById("theme").className
+    console.log(theme)
+    let style = 'mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr'
+    if (theme == 'dark-theme'){
+      style = 'mapbox://styles/mapbox/dark-v10'
+    }
+    // map.setStyle('mapbox://styles/mapbox/dark-v10');
+    */
     const map = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr',
@@ -34,10 +42,10 @@ const Map = () => {
     });
 
     map.addControl(geocoder);
-
     // After the map style has loaded on the page,
     // add a source layer and default styling for a single point
     map.on('load', function () {
+
       map.addSource('single-point', {
         type: 'geojson',
         data: {
@@ -89,6 +97,26 @@ const Map = () => {
         .addTo(map);
     });
 
+    function callback(mutationsList, observer) {
+      console.log('Mutations:', mutationsList)
+      console.log('Observer:', observer)
+      mutationsList.forEach(mutation => {
+        if (mutation.attributeName === 'class') {
+          console.log(mutation.target.className)
+          if (mutation.target.className == 'light-theme'){
+            map.setStyle('mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr')
+          } else{
+            map.setStyle('mapbox://styles/mapbox/dark-v10')
+          }
+          // this.props.map.setStyle('mapbox://styles/mapbox/dark-v10');
+  
+        }
+      })
+    }
+  
+    const mutationObserver = new MutationObserver(callback)
+  
+    mutationObserver.observe(mainNode, { attributes: true })
 
     /*
     var marker = new mapboxgl.Marker() // initialize a new marker
@@ -104,6 +132,9 @@ const Map = () => {
 
     return () => map.remove();
   }, []);
+
+  const mainNode = document.getElementById('theme')
+
 
   return (
     <div>

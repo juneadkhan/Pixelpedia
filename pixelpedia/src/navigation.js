@@ -122,9 +122,8 @@ function Navigation() {
         </div>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Dialog>
             <Modal.Header closeButton>
-              <Modal.Title>Sign In</Modal.Title>
+              <Modal.Title>Sign In</Modal.Title >
             </Modal.Header>
 
             <Modal.Body>
@@ -133,7 +132,6 @@ function Navigation() {
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
               </Container>
             </Modal.Body>
-          </Modal.Dialog>
         </Modal>
 
       </>
@@ -153,20 +151,20 @@ function Navigation() {
           </Navbar>
         </div>
 
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Dialog>
+        <Modal show={show} onHide={handleClose} style={{ backgroundcolor: darkTheme ? 'white' : 'black' }}>
             <Modal.Header closeButton>
-              <Modal.Title>Already Signed In</Modal.Title>
+              <Modal.Title>Profile</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
               <Container>
                 <h3 style={{ textAlign: 'center' }}>Hey, {firebase.auth().currentUser.displayName} 👋</h3>
                 <br></br>
-                <Button variant="outline-danger" onClick={handleSignOut}>Sign Out</Button>                
-              </Container>
+                </Container>
+                <Container style={{display: "flex", justifyContent: 'center'  }}>
+                <Button variant="outline-danger" onClick={handleSignOut}>Sign Out</Button> 
+                </Container>               
             </Modal.Body>
-          </Modal.Dialog>
         </Modal>
 
       </>
