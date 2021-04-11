@@ -68,9 +68,12 @@ const Map = () => {
       // Listen for the `result` event from the Geocoder
       // `result` event is triggered when a user makes a selection
       //  Add a marker at the result's coordinates
+      /*
       geocoder.on('result', function (e) {
+        console.log(map.getSource('single-point'))
         map.getSource('single-point').setData(e.result.geometry);
       });
+      */
     });
 
 
