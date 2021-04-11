@@ -106,7 +106,6 @@ function Navigation() {
     this.unregisterAuthObserver();
   }
 
-
   if (!state.isSignedIn) {
 
     return (
@@ -143,7 +142,7 @@ function Navigation() {
       <>
         <div className={darkTheme ? 'dark-theme' : 'light-theme'}>
           <Navbar>
-            <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : 'black' }}><h3>pixelpedia</h3><h5>Find the best photo spots</h5></Navbar.Brand>
+            <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : 'black' }}><h3>pixelpedia</h3></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
             <Button variant={darkTheme ? 'outline-warning' : 'outline-secondary'} onClick={handleClick}>{darkTheme ? '🌚' : '☀️'}</Button>
@@ -162,7 +161,8 @@ function Navigation() {
                 <br></br>
                 </Container>
                 <Container style={{display: "flex", justifyContent: 'center'  }}>
-                <Button variant="outline-danger" onClick={handleSignOut}>Sign Out</Button> 
+                <Button className = "shmancy" variant="outline-danger" onClick={handleSignOut}>Sign Out</Button> 
+                <Button className = "shmancy" variant="outline-info" href="https://docs.google.com/forms/d/e/1FAIpQLSf4OcdHdulTPqXFh_A56PoO4Je_VxkNKMEIi34wrljER0EorQ/viewform" target="_blank">Submit a Photo Spot</Button> 
                 </Container>               
             </Modal.Body>
         </Modal>
