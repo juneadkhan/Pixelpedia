@@ -22,9 +22,14 @@ const Map = () => {
     }
     // map.setStyle('mapbox://styles/mapbox/dark-v10');
     */
+    let mapStyle = 'mapbox://styles/mapbox/dark-v10'
+    if (localStorage.getItem('theme') == "false"){
+      mapStyle = 'mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr'
+    }
+
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr',
+      style: mapStyle,
       center: [lng, lat],
       zoom: zoom
 

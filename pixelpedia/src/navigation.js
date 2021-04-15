@@ -51,10 +51,20 @@ function Navigation() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [darkTheme, setDarkTheme] = React.useState(false)
+  console.log("Theme", localStorage.getItem('theme'))
+  let dark = true
+  if (localStorage.getItem('theme') == "false"){
+    dark = false
+  }
+
+  const [darkTheme, setDarkTheme] = React.useState(dark)
+  console.log("Dark theme is ", darkTheme)
+  document.getElementById("theme").className = darkTheme ? 'dark-theme' : 'light-theme'
+
 
   function handleClick() {
     setDarkTheme(prevTheme => !prevTheme)
+    localStorage.setItem('theme', !darkTheme) // True indicatess darkTheme
     document.getElementById("theme").className = darkTheme ? 'light-theme' : 'dark-theme'
   }
 
@@ -65,18 +75,18 @@ function Navigation() {
     const unsubscribeFromAuth = firebase.auth().onAuthStateChanged((user) => {
 
       if (user) {
-        console.log("The user is logged in");
+        // console.log("The user is logged in");
         state.isSignedIn = true
       } else {
-        console.log("The user is not logged in");
+        // console.log("The user is not logged in");
         state.isSignedIn = false
       }
 
       setUser(user);
       console.log(user)
       // state.isSignedIn = !state.isSignedIn;
-      console.log(firebase.auth().currentUser)
-      console.log(state.isSignedIn)
+      // console.log(firebase.auth().currentUser)
+      // console.log(state.isSignedIn)
 
     })
 
@@ -90,8 +100,8 @@ function Navigation() {
   function handleSignOut(){
     firebase.auth().signOut()
     state.isSignedIn = false;
-    console.log(firebase.auth().currentUser)
-    console.log(state.isSignedIn)
+    // console.log(firebase.auth().currentUser)
+    // console.log(state.isSignedIn)
 
   }
 
