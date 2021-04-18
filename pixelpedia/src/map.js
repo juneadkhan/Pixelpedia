@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+import ReactDOM from 'react-dom';
+import { Carousel, Container, Row, Col, Button } from 'react-bootstrap';
+
 
 mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = 'pk.eyJ1IjoianVuZWFkazI3IiwiYSI6ImNrbXpvcml4ajA0OXkydm8yODFmN3dtemgifQ.YacZnbSOmX93UZJMH7WLKg';
@@ -23,7 +26,7 @@ const Map = () => {
     // map.setStyle('mapbox://styles/mapbox/dark-v10');
     */
     let mapStyle = 'mapbox://styles/mapbox/dark-v10'
-    if (localStorage.getItem('theme') == "false"){
+    if (localStorage.getItem('theme') == "false") {
       mapStyle = 'mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr'
     }
 
@@ -38,7 +41,7 @@ const Map = () => {
       accessToken: mapboxgl.accessToken, // Set the access token
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       marker: false, // Do not use the default marker style
-      placeholder: 'Find photo spots in...', // Placeholder text for the search bar
+      placeholder: 'Find photo spots around...', // Placeholder text for the search bar
       bbox: [-79.5657, 35.4682, -77.2503, 36.2836], // Boundary for The Triangle
       proximity: {
         longitude: -79.055847,
@@ -94,15 +97,60 @@ const Map = () => {
       }
 
       var feature = features[0];
-      console.log(feature)
+      var latDisp = feature.geometry.coordinates[1];
+      var lngDisp = feature.geometry.coordinates[0];
 
-      var popup = new mapboxgl.Popup({ offset: [0, -15] })
+      console.log("FEATURE", feature)
+
+      const placeholder = document.createElement('div');
+      ReactDOM.render(
+
+        <Container>
+          <Row>
+            <Col>
+              <h3>{feature.properties.Name}</h3>
+              <p>{feature.properties.Description}</p>
+              <Button variant="dark" block href={"https://maps.google.com/?q="+latDisp+","+lngDisp} target="_blank">
+                  <svg aria-hidden="true" class="native svg-icon iconGoogle" width="18" height="18" viewBox="0 0 18 18"><path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 002.38-5.88c0-.57-.05-.66-.15-1.18z" fill="#4285F4"></path><path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 01-7.18-2.54H1.83v2.07A8 8 0 008.98 17z" fill="#34A853"></path><path d="M4.5 10.52a4.8 4.8 0 010-3.04V5.41H1.83a8 8 0 000 7.18l2.67-2.07z" fill="#FBBC05"></path><path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 001.83 5.4L4.5 7.49a4.77 4.77 0 014.48-3.3z" fill="#EA4335"></path></svg>
+                    View on Google Maps
+                </Button>
+            </Col>
+            <Col><Carousel fade>
+              <Carousel.Item>
+                <img
+                  className="d-block width-100"
+                  src="https://www.unc.edu/wp-content/uploads/2019/09/190244_JEY_CampusScenes006-1200x675.jpg"
+                  alt="First slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block width-100"
+                  src="https://i.pinimg.com/originals/8f/20/91/8f209105e938d26a19780f97dfc825b8.jpg"
+                  alt="Second slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block width-100"
+                  src="https://www.unc.edu/wp-content/uploads/2019/04/008919_BellTowerClimb0178.jpg"
+                  alt="Third slide"
+                />
+              </Carousel.Item>
+            </Carousel></Col>
+          </Row>
+        </Container>
+
+        , placeholder);
+
+      let darkTheme = true
+      if (localStorage.getItem('theme') == "false") {
+        darkTheme = true;
+      }
+
+      var popup = new mapboxgl.Popup({ offset: [0, -15], className: darkTheme ? 'dark' : 'light', id: 'mapboxPopupID' })
         .setLngLat(feature.geometry.coordinates)
-        .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.Description + '</p>'
-          + '<img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Bell_tower_in_Chapel_Hill_%28cropped%29.jpg" width="200" height="200">'
-          + '<img src="https://www.unc.edu/wp-content/uploads/2019/04/008919_BellTowerClimb0178.jpg" width="200" height="200">'
-          + '<img src="https://i.pinimg.com/originals/8f/20/91/8f209105e938d26a19780f97dfc825b8.jpg" width="200" height="200">'
-        )
+        .setDOMContent(placeholder)
         .addTo(map);
     });
 
@@ -112,19 +160,17 @@ const Map = () => {
       mutationsList.forEach(mutation => {
         if (mutation.attributeName === 'class') {
           console.log(mutation.target.className)
-          if (mutation.target.className == 'light-theme'){
+          if (mutation.target.className == 'light-theme') {
             map.setStyle('mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr')
-          } else{
+          } else {
             map.setStyle('mapbox://styles/mapbox/dark-v10')
           }
-          // this.props.map.setStyle('mapbox://styles/mapbox/dark-v10');
-  
         }
       })
     }
-  
+
     const mutationObserver = new MutationObserver(callback)
-  
+
     mutationObserver.observe(mainNode, { attributes: true })
 
     /*

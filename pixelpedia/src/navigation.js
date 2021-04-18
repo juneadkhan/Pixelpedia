@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import React, { useEffect, useState } from "react";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 
 
@@ -121,12 +122,12 @@ function Navigation() {
 
     return (
       <>
-        <div className={darkTheme ? 'dark-theme' : 'light-theme'}>
+        <div className={darkTheme ? 'dark-theme' : '#202020'}>
           <Navbar>
-            <Navbar.Brand className = "shmancy" href="#home" style={{ color: darkTheme ? 'white' : 'black' }}><h3>pixelpedia</h3></Navbar.Brand>
+            <Navbar.Brand className = "shmancy" href="#home" style={{ color: darkTheme ? 'white' : 'black', marginLeft: "0.8rem" }}><h3>pixelpedia</h3></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
-            <Button variant={darkTheme ? 'outline-warning' : 'outline-secondary'} onClick={handleClick}>{darkTheme ? '🌚' : '☀️'}</Button>
+            <BootstrapSwitchButton checked={!darkTheme} onstyle="outline-secondary" offstyle="outline-warning"  onlabel = "☀️" offlabel = '🌚' onChange={handleClick}/>
             <Button className = "shmancy" variant="outline-info" onClick={handleShow}>Sign In</Button>
           </Navbar>
         </div>
@@ -153,10 +154,10 @@ function Navigation() {
       <>
         <div className={darkTheme ? 'dark-theme' : 'light-theme'}>
           <Navbar>
-            <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : 'black' }}><h3>pixelpedia</h3></Navbar.Brand>
+            <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : '#202020', marginLeft: "0.8rem" }}><h3 >pixelpedia</h3></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
-            <Button variant={darkTheme ? 'outline-warning' : 'outline-secondary'} onClick={handleClick}>{darkTheme ? '🌚' : '☀️'}</Button>
+            <BootstrapSwitchButton checked={!darkTheme} onstyle="outline-secondary" offstyle="outline-warning"  onlabel = "☀️" offlabel = '🌚' onChange={handleClick}/>
             <Button className = "shmancy" variant="outline-info" onClick={handleShow}>Signed in as {firebase.auth().currentUser.displayName}</Button>
           </Navbar>
         </div>

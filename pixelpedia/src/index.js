@@ -5,6 +5,7 @@ import Map from "./map"
 import SignIn from "./signIn"
 
 
+
 ReactDOM.render( < Navigation/> , document.getElementById('nav'));
 ReactDOM.render( < Main /> , document.getElementById('map'));
 
