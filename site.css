@@ -51,14 +51,15 @@
 }
 
 .dark-theme {
-    background-color: #000000;
+    background-color: #202020;
     color: #f8f8f8;
   }
 
   h3 { 
-      font-family: 'Merriweather', Georgia, serif; 
+      font-family: 'DM Serif Text', Georgia, serif; 
       margin-top: 0.5rem !important;
       margin-bottom: 0.5rem !important;
+      font-weight: bold;
 }
 
 p{
@@ -91,3 +92,12 @@ p{
     font-family: 'Merriweather', Georgia, serif !important; 
     font-size: xx-small
 }
+
+*{
+    outline: none;
+}
+
+.addMargin{
+    margin-left: 0.8rem;
+}
+
