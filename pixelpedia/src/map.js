@@ -25,7 +25,7 @@ const Map = () => {
     }
     // map.setStyle('mapbox://styles/mapbox/dark-v10');
     */
-    let mapStyle = 'mapbox://styles/mapbox/dark-v10'
+    let mapStyle = 'mapbox://styles/juneadk27/cknou38682ur817mztigvh1ux'
     if (localStorage.getItem('theme') == "false") {
       mapStyle = 'mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr'
     }
@@ -145,7 +145,7 @@ const Map = () => {
 
       let darkTheme = true
       if (localStorage.getItem('theme') == "false") {
-        darkTheme = true;
+        darkTheme = false;
       }
 
       var popup = new mapboxgl.Popup({ offset: [0, -15], className: darkTheme ? 'dark' : 'light', id: 'mapboxPopupID' })
@@ -163,7 +163,7 @@ const Map = () => {
           if (mutation.target.className == 'light-theme') {
             map.setStyle('mapbox://styles/juneadk27/ckn10m3z11mxg17loh9k451jr')
           } else {
-            map.setStyle('mapbox://styles/mapbox/dark-v10')
+            map.setStyle('mapbox://styles/juneadk27/cknou38682ur817mztigvh1ux')
           }
         }
       })
