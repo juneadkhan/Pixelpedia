@@ -128,7 +128,7 @@ function Navigation() {
             <Nav className="mr-auto">
             </Nav>
             <BootstrapSwitchButton checked={!darkTheme} onstyle="outline-secondary" offstyle="outline-warning"  onlabel = "☀️" offlabel = '🌚' onChange={handleClick}/>
-            <Button className = "shmancy" variant="outline-info" onClick={handleShow}>Sign In</Button>
+            <Button style = {{marginLeft: "0.4rem"}} className = "shmancy" variant="outline-info" onClick={handleShow}>Sign In</Button>
           </Navbar>
         </div>
 
@@ -158,7 +158,7 @@ function Navigation() {
             <Nav className="mr-auto">
             </Nav>
             <BootstrapSwitchButton checked={!darkTheme} onstyle="outline-secondary" offstyle="outline-warning"  onlabel = "☀️" offlabel = '🌚' onChange={handleClick}/>
-            <Button className = "shmancy" variant="outline-info" onClick={handleShow}>Signed in as {firebase.auth().currentUser.displayName}</Button>
+            <Button style = {{marginLeft: "0.4rem"}} className = "shmancy" variant="outline-info" onClick={handleShow}>Signed in as {firebase.auth().currentUser.displayName}</Button>
           </Navbar>
         </div>
 
@@ -174,7 +174,7 @@ function Navigation() {
                 </Container>
                 <Container style={{display: "flex", justifyContent: 'center'  }}>
                 <Button className = "shmancy" variant="outline-danger" onClick={handleSignOut}>Sign Out</Button> 
-                <Button className = "shmancy" variant="outline-info" href="https://docs.google.com/forms/d/e/1FAIpQLSf4OcdHdulTPqXFh_A56PoO4Je_VxkNKMEIi34wrljER0EorQ/viewform" target="_blank">Submit a Photo Spot</Button> 
+                <Button style = {{marginLeft: "0.4rem"}} className = "shmancy" variant="outline-info" href="https://docs.google.com/forms/d/e/1FAIpQLSf4OcdHdulTPqXFh_A56PoO4Je_VxkNKMEIi34wrljER0EorQ/viewform" target="_blank">Submit a Photo Spot</Button> 
                 </Container>               
             </Modal.Body>
         </Modal>
