@@ -45,11 +45,7 @@ const Map = () => {
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       marker: false, // Do not use the default marker style
       placeholder: 'Find photo spots around...', // Placeholder text for the search bar
-      bbox: [-79.5657, 35.4682, -77.2503, 36.2836], // Boundary for The Triangle
-      proximity: {
-        longitude: -79.055847,
-        latitude: 35.913200
-      } // Coordinates of Chapel Hill
+  
     });
 
     map.addControl(geocoder);
@@ -119,7 +115,7 @@ const Map = () => {
               flexDirection: "row",
               justifyContent: "flex-start"
             }}>
-              <h3>{feature.properties.Name}</h3>
+              <h3 className = "propertyName">{feature.properties.Name}</h3>
               <p>{feature.properties.Description}</p>
               <Container>
                 <Row>
@@ -213,7 +209,6 @@ const Map = () => {
       */
 
     map.on('move', () => {
-      console.log("WE MOVING")
       setLng(map.getCenter().lng.toFixed(4));
       setLat(map.getCenter().lat.toFixed(4));
       setZoom(map.getZoom().toFixed(2));
@@ -227,9 +222,11 @@ const Map = () => {
 
   return (
     <div>
+      { /*
       <div className="sidebar">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
+      </div> */
+      }
       <div className="map-container" ref={mapContainer} />
     </div>
   );
