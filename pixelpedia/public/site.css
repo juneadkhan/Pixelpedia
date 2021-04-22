@@ -171,3 +171,12 @@ border: 1px solid rgb(0 0 0 / 0%) !important;
     border-bottom-left-radius: 0.5rem !important;
     border-bottom-right-radius: 0.5rem !important;
 }
+
+.dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.mdl-button--raised {
+    box-shadow: none !important;
+}

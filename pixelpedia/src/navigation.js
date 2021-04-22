@@ -198,6 +198,7 @@ function Navigation() {
               root: useStyles().root, // class name, e.g. `classes-nesting-root-x`
               label: useStyles().label, // class name, e.g. `classes-nesting-label-x`
             }} className="SignInButton" variant="contained" color="secondary" onClick={handleShow} disableElevation>Signed in as {firebase.auth().currentUser.displayName}</Button>
+            
           </Navbar>
         </div>
 
