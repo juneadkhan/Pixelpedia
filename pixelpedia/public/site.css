@@ -17,6 +17,7 @@
     left: 0;
     margin: 12px;
     border-radius: 4px;
+    
 }
 
 #map-container {
@@ -37,7 +38,7 @@
 }
 
 .mapboxgl-popup-content{
-    width: 42rem;
+    width: 43.5rem;
     padding: 20px 20px 20px;
     border-radius: 0.4rem
 }
@@ -130,7 +131,43 @@ p{
 
   }
 
-  svg{
-      margin-right: 0.4rem;
-      margin-bottom: 0.2rem;
+  .SignInButton {
+    color: black;
   }
+
+  .SignInButton.Mui-focusVisible {
+      background-color: white;
+  }
+
+  .MuiButtonBase-root { /* Increase the specificity */
+    color: rgb(0, 0, 0) ;
+    background-color: blanchedalmond;
+  }
+
+  * {
+    transition: background-color 0.25s ease, color 0.1s ease;
+  }
+
+  .mdl-shadow--2dp {
+      box-shadow: none !important;
+  }
+
+  .firebaseui-title {
+    text-transform: capitalize;
+    font-family: 'Merriweather';
+}
+
+.modal-header{
+    border-bottom: 1px solid #4e4e4e !important;
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+}
+.modal-content{
+background-color: #fff0 !important;
+border: 1px solid rgb(0 0 0 / 0%) !important;
+}
+
+.modal-body {
+    border-bottom-left-radius: 0.5rem !important;
+    border-bottom-right-radius: 0.5rem !important;
+}
