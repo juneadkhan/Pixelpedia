@@ -181,6 +181,12 @@ border: 1px solid rgb(0 0 0 / 0%) !important;
     box-shadow: none !important;
 }
 
+.dark .MuiPaper-root{
+    background-color: #23282b !important;
+    color: white !important;
+
+}
+
 @media only screen and (max-width: 768px) {
     p{font-size: xx-small;}
     .propertyName{font-size: small;}
