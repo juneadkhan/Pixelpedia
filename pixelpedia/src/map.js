@@ -21,11 +21,11 @@ export async function getWeatherIcon(lat, lng) {
 
 };
 
-export async function getTemperature(lat, lng) {
+export async function getTemperature(lat, lng, unit) {
 
   const result = await axios({
     method: 'get',
-    url: 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=&appid=f36e366463c261985623b04441c510f8&units=metric',
+    url: 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=&appid=f36e366463c261985623b04441c510f8&units='+unit,
   });
 
   console.log("DaTA: ", Math.round(result.data['current']['temp']))
@@ -126,7 +126,15 @@ const Map = () => {
 
       var icon = await getWeatherIcon(latDisp, lngDisp)
       var iconURL = "https://openweathermap.org/img/wn/" + icon + ".png"
-      var temp = await getTemperature(latDisp, lngDisp)
+
+      var units = "imperial"
+      if (localStorage.getItem('units') == "cel"){
+        units = "metric"
+      }
+
+      var temp = await getTemperature(latDisp, lngDisp, units)
+
+      var unitsInitial = (units=="imperial" ? 'F' : 'C')
 
 
 
@@ -158,7 +166,7 @@ const Map = () => {
                 </Button>
                   <Paper className = {darkTheme ? 'dark' : 'light'} variant="outlined" disabled style={{marginLeft: "0.5rem", paddingRight:"0.5rem", paddingLeft:"0.5rem", height:"50px"}}>
                   <img className="img-fluid" src={iconURL} style={{ width: "25px", height: "25px" }} />
-                  <p style={{fontSize:"12px"}}>{temp + "°C"}</p></Paper>
+                  <p style={{fontSize:"12px"}}>{temp + "°"+unitsInitial}</p></Paper>
 
 
                   { /* 

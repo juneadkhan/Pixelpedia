@@ -5,7 +5,13 @@ import React, { useEffect, useState } from "react";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-import { Button, IconButton, Tooltip} from '@material-ui/core';
+import { Button, IconButton, Tooltip } from '@material-ui/core';
+import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
+import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
+import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
+import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
+import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
+
 import DeleteIcon from '@material-ui/icons/Delete';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
@@ -70,6 +76,19 @@ function Navigation() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  let units = "far"
+  if (localStorage.getItem('units') == "cel") {
+    units = "cel"
+  }
+
+  const [alignment, setAlignment] = React.useState(units);
+
+  const handleAlignment = (event, newAlignment) => {
+    localStorage.setItem('units', newAlignment) // True indicatess darkTheme
+    setAlignment(newAlignment);
+  };
+
 
   console.log("Theme", localStorage.getItem('theme'))
   let dark = true
@@ -146,13 +165,13 @@ function Navigation() {
             <Navbar.Brand className="shmancy" href="#home" style={{ color: darkTheme ? 'white' : 'black', marginLeft: "0.8rem" }}><h3>pixelpedia</h3></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
-            <Tooltip title ={darkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'} arrow>
-            <IconButton aria-label="delete" onClick={handleClick}>
-              {darkTheme
-                ? <BrightnessHighIcon style={{ color: "white" }} />
-                : <Brightness4Icon />
-              }
-            </IconButton>
+            <Tooltip title={darkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'} arrow>
+              <IconButton aria-label="delete" onClick={handleClick}>
+                {darkTheme
+                  ? <BrightnessHighIcon style={{ color: "white" }} />
+                  : <Brightness4Icon />
+                }
+              </IconButton>
             </Tooltip>
             <Button style={{ marginLeft: "0.4rem" }} classes={{
               root: useStyles().root, // class name, e.g. `classes-nesting-root-x`
@@ -186,19 +205,19 @@ function Navigation() {
             <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : '#202020', marginLeft: "0.8rem" }}><h3 >pixelpedia</h3></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
-            <Tooltip title ={darkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'} arrow>
-            <IconButton aria-label="delete" onClick={handleClick}>
-              {darkTheme
-                ? <BrightnessHighIcon style={{ color: "white" }} />
-                : <Brightness4Icon />
-              }
-            </IconButton>
+            <Tooltip title={darkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'} arrow>
+              <IconButton aria-label="delete" onClick={handleClick}>
+                {darkTheme
+                  ? <BrightnessHighIcon style={{ color: "white" }} />
+                  : <Brightness4Icon />
+                }
+              </IconButton>
             </Tooltip>
             <Button style={{ marginLeft: "0.4rem" }} classes={{
               root: useStyles().root, // class name, e.g. `classes-nesting-root-x`
               label: useStyles().label, // class name, e.g. `classes-nesting-label-x`
             }} className="SignInButton" variant="contained" color="secondary" onClick={handleShow} disableElevation>Signed in as {firebase.auth().currentUser.displayName}</Button>
-            
+
           </Navbar>
         </div>
 
@@ -208,20 +227,37 @@ function Navigation() {
           </Modal.Header>
 
           <Modal.Body style={{ backgroundColor: darkTheme ? '#202020' : 'white', color: darkTheme ? 'white' : 'black' }}>
-            <Container>
+            <Container >
               <h3 style={{ textAlign: 'center', fontFamily: 'Merriweather' }}>Hey, {firebase.auth().currentUser.displayName} 👋</h3>
               <br></br>
+            </Container>
+            <Container style={{ display: "flex", justifyContent: 'center', marginBottom: "2rem"}}>
+            <ToggleButtonGroup
+                value={alignment}
+                exclusive
+                onChange={handleAlignment}
+                aria-label="text alignment"
+              >
+                <ToggleButton value="cel" style={{color: darkTheme ? "white" : "black"}}>
+                  °C
+                </ToggleButton>
+                <ToggleButton value="far" style={{color: darkTheme ? "white" : "black"}}>
+                  °F
+                </ToggleButton>
+
+              </ToggleButtonGroup>
+
             </Container>
             <Container style={{ display: "flex", justifyContent: 'center' }}>
               <Button variant="contained" color="primary" onClick={handleSignOut} disableElevation>Sign Out</Button>
               <Button style={{ marginLeft: "0.4rem" }}
-        variant="contained"
-        color="default"
-        startIcon={<CloudUploadIcon />}
-        disableElevation
-        href="https://docs.google.com/forms/d/e/1FAIpQLSf4OcdHdulTPqXFh_A56PoO4Je_VxkNKMEIi34wrljER0EorQ/viewform" target="_blank"
-      >
-        Submit a Photo Spot
+                variant="contained"
+                color="default"
+                startIcon={<CloudUploadIcon />}
+                disableElevation
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf4OcdHdulTPqXFh_A56PoO4Je_VxkNKMEIi34wrljER0EorQ/viewform" target="_blank"
+              >
+                Submit a Photo Spot
       </Button>
             </Container>
           </Modal.Body>
