@@ -7,6 +7,7 @@ import { Button, IconButton, Paper } from '@material-ui/core/';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import axios from 'axios';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 
 export async function getWeatherIcon(lat, lng) {
@@ -25,7 +26,7 @@ export async function getTemperature(lat, lng, unit) {
 
   const result = await axios({
     method: 'get',
-    url: 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=&appid=f36e366463c261985623b04441c510f8&units='+unit,
+    url: 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=&appid=f36e366463c261985623b04441c510f8&units=' + unit,
   });
 
   console.log("DaTA: ", Math.round(result.data['current']['temp']))
@@ -128,13 +129,13 @@ const Map = () => {
       var iconURL = "https://openweathermap.org/img/wn/" + icon + ".png"
 
       var units = "imperial"
-      if (localStorage.getItem('units') == "cel"){
+      if (localStorage.getItem('units') == "cel") {
         units = "metric"
       }
 
       var temp = await getTemperature(latDisp, lngDisp, units)
 
-      var unitsInitial = (units=="imperial" ? 'F' : 'C')
+      var unitsInitial = (units == "imperial" ? 'F' : 'C')
 
 
 
@@ -164,9 +165,9 @@ const Map = () => {
                     <svg style={{ marginRight: "0.5rem" }} aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 002.38-5.88c0-.57-.05-.66-.15-1.18z" fill="#4285F4"></path><path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 01-7.18-2.54H1.83v2.07A8 8 0 008.98 17z" fill="#34A853"></path><path d="M4.5 10.52a4.8 4.8 0 010-3.04V5.41H1.83a8 8 0 000 7.18l2.67-2.07z" fill="#FBBC05"></path><path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 001.83 5.4L4.5 7.49a4.77 4.77 0 014.48-3.3z" fill="#EA4335"></path></svg>
                     Open in Google Maps
                 </Button>
-                  <Paper className = {darkTheme ? 'dark' : 'light'} variant="outlined" disabled style={{marginLeft: "0.5rem", paddingRight:"0.5rem", paddingLeft:"0.5rem", height:"50px"}}>
-                  <img className="img-fluid" src={iconURL} style={{ width: "25px", height: "25px" }} />
-                  <p style={{fontSize:"12px"}}>{temp + "°"+unitsInitial}</p></Paper>
+                  <Paper className={darkTheme ? 'dark' : 'light'} variant="outlined" disabled style={{ marginLeft: "0.5rem", paddingRight: "0.5rem", paddingLeft: "0.5rem", height: "50px" }}>
+                    <img className="img-fluid" src={iconURL} style={{ width: "25px", height: "25px" }} />
+                    <p style={{ fontSize: "12px" }}>{temp + "°" + unitsInitial}</p></Paper>
 
 
                   { /* 
@@ -184,21 +185,32 @@ const Map = () => {
 
               {feature.properties.Img != undefined &&
                 <Carousel.Item>
-                  <img
-                    className="d-block width-100"
+                  <img className="d-block width-100"
                     src={feature.properties.Img}
-                    alt="First slide"
-                  />
+                    alt="First slide" />
+                  {feature.properties.Auth != undefined &&
+                  <Carousel.Caption>
+                    <p style={{ backgroundColor: "#23282bba", padding: "3px", fontSize: "10px" }}> <InstagramIcon style={{ marginRight: "0.1rem", height: "14px" }} />
+                     {feature.properties.Auth}</p>
+                  </Carousel.Caption>
+                  }
                 </Carousel.Item>
               }
 
               {feature.properties.Img2 != undefined &&
                 <Carousel.Item>
+
                   <img
                     className="d-block width-100"
                     src={feature.properties.Img2}
                     alt="Second slide"
                   />
+                 {feature.properties.Auth2 != undefined &&
+                  <Carousel.Caption>
+                    <p style={{ backgroundColor: "#23282bba", padding: "3px", fontSize: "10px" }}> <InstagramIcon style={{ marginRight: "0.1rem", height: "14px" }} />
+                     {feature.properties.Auth2}</p>
+                  </Carousel.Caption>
+                  }
                 </Carousel.Item>
               }
 
@@ -209,6 +221,12 @@ const Map = () => {
                     src={feature.properties.Img3}
                     alt="Third slide"
                   />
+                  {feature.properties.Auth3 != undefined &&
+                  <Carousel.Caption>
+                    <p style={{ backgroundColor: "#23282bba", padding: "3px", fontSize: "10px" }}> <InstagramIcon style={{ marginRight: "0.1rem", height: "14px" }} />
+                     {feature.properties.Auth3}</p>
+                  </Carousel.Caption>
+                  }
                 </Carousel.Item>
               }
             </Carousel></Col>

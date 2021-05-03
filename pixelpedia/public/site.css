@@ -188,6 +188,17 @@ border: 1px solid rgb(0 0 0 / 0%) !important;
 }
 
 
+
+.carousel-caption {
+    position: absolute;
+    right: 0% !important;
+    top: 0% !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    left: auto !important;
+}
+
+
 @media only screen and (max-width: 768px) {
     p{font-size: xx-small;}
     .propertyName{font-size: small;}

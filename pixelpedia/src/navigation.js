@@ -17,6 +17,7 @@ import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { makeStyles } from '@material-ui/core/styles';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 
 const useStyles = makeStyles({
@@ -165,6 +166,16 @@ function Navigation() {
             <Navbar.Brand className="shmancy" href="#home" style={{ color: darkTheme ? 'white' : 'black', marginLeft: "0.8rem" }}><h3>pixelpedia</h3></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
+
+            <Tooltip title={'View Instagram'} arrow>
+              <IconButton aria-label="insta"  href="https://www.instagram.com/pixelpedia.io/" target="_blank">
+                {darkTheme
+                  ? <InstagramIcon style={{ color: "white" }} />
+                  : <InstagramIcon />
+                }
+              </IconButton>
+            </Tooltip>
+
             <Tooltip title={darkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'} arrow>
               <IconButton aria-label="delete" onClick={handleClick}>
                 {darkTheme
@@ -173,6 +184,7 @@ function Navigation() {
                 }
               </IconButton>
             </Tooltip>
+
             <Button style={{ marginLeft: "0.4rem" }} classes={{
               root: useStyles().root, // class name, e.g. `classes-nesting-root-x`
               label: useStyles().label, // class name, e.g. `classes-nesting-label-x`
@@ -205,6 +217,16 @@ function Navigation() {
             <Navbar.Brand href="#home" style={{ color: darkTheme ? 'white' : '#202020', marginLeft: "0.8rem" }}><h3 >pixelpedia</h3></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
+
+           <Tooltip title={'View Instagram'} arrow>
+              <IconButton aria-label="insta"  href="https://www.instagram.com/pixelpedia.io/" target="_blank">
+                {darkTheme
+                  ? <InstagramIcon style={{ color: "white" }} />
+                  : <InstagramIcon />
+                }
+              </IconButton>
+            </Tooltip>
+
             <Tooltip title={darkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'} arrow>
               <IconButton aria-label="delete" onClick={handleClick}>
                 {darkTheme
