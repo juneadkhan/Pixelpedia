@@ -1,6 +1,5 @@
-import Navigation from "./navigation"
 import Map from "./map"
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 
 const Main = () => {
 

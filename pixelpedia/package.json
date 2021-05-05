@@ -1,9 +1,9 @@
 {
   "name": "pixelpedia",
-  "description": "COMP 426 Final",
+  "description": "Photo Spot finding tool",
   "version": "1.0.0",
   "main": "src/index.js",
-  "homepage": "https://juneadkhan.github.io/Pixelpedia/",
+  "homepage": "https://pixelpediaio.com/",
   "dependencies": {
     "-": "0.0.1",
     "@material-ui/core": "^4.11.3",
