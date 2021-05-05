@@ -202,7 +202,7 @@ border: 1px solid rgb(0 0 0 / 0%) !important;
 @media only screen and (max-width: 768px) {
     p{font-size: xx-small;}
     .propertyName{font-size: small;}
-    .mapboxgl-popup-content{width: 120%;}
+    .mapboxgl-popup-content{width: 125%;}
     .MuiButton-label{font-size: x-small;}
     .width-100 {width: 220px !important; height: 200px; margin-top: 0.5rem;}
 }
