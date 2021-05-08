@@ -9,3 +9,9 @@ This is a crowdsourced **Website** that lets you explore the world's best hidden
 - **Mapbox GL JS** used for interactive map
 
 **Website:** https://pixelpediaio.com/
+
+## Key Features 
+
+### Explore the world with the beautiful Map UI
+
+<img src="" width="200"/>
