@@ -1,3 +1,7 @@
+ body{
+    background-color: black !important;
+  }
+
 .map-container {
     position: absolute;
     top: 0;
