@@ -256,9 +256,9 @@ const Map = () => {
   return (
     <div>
       { 
-      <div className="sidebar">
+      /*<div className="sidebar">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
+      </div> */
       }
       <div className="map-container" ref={mapContainer} />
     </div>
